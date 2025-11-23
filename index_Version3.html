@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Rueda 3D STONARIS</title>
+<style>
+  body {
+    margin: 0;
+    background: transparent;
+    font-family: 'Helvetica Neue', sans-serif;
+    color: white;
+    overflow-x: hidden;
+  }
+
+  .carousel-container {
+    width: 100%;
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 2200px;
+  }
+
+  .carousel {
+    position: relative;
+    width: 260px;
+    height: 400px; 
+    transform-style: preserve-3d;
+    transition: transform 1s ease;
+  }
+
+  .material-wrapper {
+    position: absolute;
+    width: 240px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    backface-visibility: hidden;
+    transition: transform 0.5s ease;
+  }
+
+  .material-border {
+    position: relative;
+    width: 240px;
+    height: 340px;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: border 0.3s ease;
+  }
+
+  .material-border:hover {
+    border: 4px solid #FF5A00;
+  }
+
+  .material-item {
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .material-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .material-item img.zoomed {
+    transform: scale(1.10);
+    z-index: 2;
+  }
+
+  .material-label {
+    margin-top: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+  }
+
+  .carousel-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+  }
+
+  .carousel-buttons button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    transition: transform 0.3s ease;
+    position: relative;
+    top: -10px;
+  }
+
+  .carousel-buttons button:hover {
+    transform: scale(1.1);
+  }
+
+  .carousel-buttons svg {
+    width: 32px;
+    height: 32px;
+    fill: #ffffff;
+    transition: fill 0.3s ease;
+  }
+
+  .carousel-buttons button:hover svg {
+    fill: #FF5A00;
+  }
+</style>
+</head>
+<body>
+
+<div class="carousel-container">
+  <div class="carousel" id="carousel">
+
+    <div class="material-wrapper">
+      <div class="material-border">
+        <div class="material-item">
+          <img src="https://www.mediterraneastone.com/wp-content/uploads/2022/11/Panda-white-2-3.jpeg">
+        </div>
+      </div>
+      <div class="material-label">Invisible Light</div>
+    </div>
+
+    <div class="material-wrapper">
+      <div class="material-border">
+        <div class="material-item">
+          <img src="https://marmoles.mx/img/p/4/3/5/9/4359.jpg">
+        </div>
+      </div>
+      <div class="material-label">Verde Alpi</div>
+    </div>
+
+    <div class="material-wrapper">
+      <div class="material-border">
+        <div class="material-item">
+          <img src="https://marmoles.mx/7070-large_default/quarzo_brillante_blue_lamina_se.jpg">
+        </div>
+      </div>
+      <div class="material-label">Brillante Blue</div>
+    </div>
+
+    <div class="material-wrapper">
+      <div class="material-border">
+        <div class="material-item">
+          <img src="https://marmoles.mx/2274-large_default/onix_miele_importado_italia_lamina.jpg">
+        </div>
+      </div>
+      <div class="material-label">Grigio Carnico</div>
+    </div>
+
+    <div class="material-wrapper">
+      <div class="material-border">
+        <div class="material-item">
+          <img src="https://grupoabastel.com/wp-content/uploads/2020/05/cuarcita-calacatta-white-abastel.jpg">
+        </div>
+      </div>
+      <div class="material-label">Italica</div>
+    </div>
+
+    <div class="material-wrapper">
+      <div class="material-border">
+        <div class="material-item">
+          <img src="https://marmoles.mx/2570-large_default/onix_blue_cres_ity_lamina.jpg">
+        </div>
+      </div>
+      <div class="material-label">Onix Blue C/Res. Ity.</div>
+    </div>
+
+    <div class="material-wrapper">
+      <div class="material-border">
+        <div class="material-item">
+          <img src="https://www.marmolesnatura.com/cdn/shop/files/gra100-2.jpg?v=1684194419">
+        </div>
+      </div>
+      <div class="material-label">Granito Titanium Leather Finish</div>
+    </div>
+
+    <div class="material-wrapper">
+      <div class="material-border">
+        <div class="material-item">
+          <img src="https://www.zenithc.com/photo/materiali/VDAs.jpg">
+        </div>
+      </div>
+      <div class="material-label">Marmol Verde Api</div>
+    </div>
+
+    <div class="material-wrapper">
+      <div class="material-border">
+        <div class="material-item">
+          <img src="https://marmoles.mx/4358-large_default/quartzita_metalicus_pb_lamina.jpg">
+        </div>
+      </div>
+      <div class="material-label">Cuarcita Metalicus</div>
+    </div>
+
+    <div class="material-wrapper">
+      <div class="material-border">
+        <div class="material-item">
+          <img src="https://marmoles.mx/img/p/5/7/6/8/5768.jpg">
+        </div>
+      </div>
+      <div class="material-label">Granito Magma Gold</div>
+    </div>
+
+    <div class="material-wrapper">
+      <div class="material-border">
+        <div class="material-item">
+          <img src="https://www.marmolesnatura.com/cdn/shop/files/gra062-2.jpg?v=1684193861">
+        </div>
+      </div>
+      <div class="material-label">Granito Ala de mosca azul</div>
+    </div>
+
+    <div class="material-wrapper">
+      <div class="material-border">
+        <div class="material-item">
+          <img src="https://marmoles.mx/2274-large_default/onix_miele_importado_italia_lamina.jpg">
+        </div>
+      </div>
+      <div class="material-label">Onix Miele</div>
+    </div>
+
+  </div>
+</div>
+
+<div class="carousel-buttons">
+  <button onclick="rotateCarousel(-1)">
+    <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+  </button>
+  <button onclick="rotateCarousel(1)">
+    <svg viewBox="0 0 24 24"><path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/></svg>
+  </button>
+</div>
+
+<script>
+  const carousel = document.getElementById("carousel");
+  const items = carousel.querySelectorAll(".material-wrapper");
+  const itemCount = items.length;
+  const angle = 360 / itemCount;
+  const radius = 560; 
+  let currentAngle = 0;
+
+  items.forEach((wrapper, i) => {
+    const rotation = angle * i;
+    wrapper.style.transform = `
+      rotateY(${rotation}deg)
+      translateZ(${radius}px)
+    `;
+    const img = wrapper.querySelector("img");
+    img.addEventListener("mouseenter", () => img.classList.add("zoomed"));
+    img.addEventListener("mouseleave", () => img.classList.remove("zoomed"));
+  });
+
+  function rotateCarousel(direction) {
+    currentAngle += -direction * angle;
+    carousel.style.transform = `rotateY(${currentAngle}deg)`;
+  }
+</script>
+
+</body>
+</html>
